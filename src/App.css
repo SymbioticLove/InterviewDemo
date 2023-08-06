@@ -1,0 +1,101 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #f39c12;
+    --background-color: #f4f6f6;
+    --font-color: #2c3e50;
+    --border-radius: 6px;
+    --font-family: 'Your Font Name', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+.App {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+}
+
+.app-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.app-content h1 {
+    text-align: center;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+textarea, select, button {
+    padding: 10px;
+    border: 1px solid var(--font-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition-speed);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+select:hover, textarea:hover, button:hover {
+    border-color: var(--primary-color);
+}
+
+select:hover, button:hover {
+    cursor: pointer;
+}
+
+.button-contain {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    width: 200px;
+    &:hover {
+        background-color: var(--secondary-color);
+    }
+}
+
+h2 {
+    margin-top: 40px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+div > p {
+    animation: fadeIn var(--transition-speed) forwards;
+}
+
+textarea:focus, select:focus {
+    box-shadow: 0px 0px 8px rgba(52,152,219,0.5);
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .app-content {
+        flex-direction: column;
+    }
+}
