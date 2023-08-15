@@ -112,6 +112,12 @@ function App() {
       };
   
       setStoryHistory([storyDetails, ...storyHistory]);
+      setAgeGroup('');
+      setPrompt('');
+      setGenre('');
+      setAuthor('');
+      setCustomAuthor('');
+      setCustomGenre('');
 
     } catch (err) {
         console.error(err);

@@ -76,7 +76,9 @@ function StoryHistory({ history, continueStory, currentParams }) {
       {(isModalOpen || isTransitioning) && (
         <div className={`modal-background ${isModalOpen ? 'show' : ''}`} onClick={closeModal}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            {currentStory}
+          {currentStory.split('\n').map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
             <button 
                 onClick={() => downloadStoryAsTextFile(currentStory)}
                 className='dl-button'
@@ -85,10 +87,9 @@ function StoryHistory({ history, continueStory, currentParams }) {
             </button>
             <button 
               onClick={() => {
-                // Get the last 50 characters of the current story
-                const last50Chars = currentStory;
+                const previousStory = currentStory;
                 
-                continueStory(last50Chars, currentParams.author, currentParams.genre, currentParams.ageGroup);
+                continueStory(previousStory, currentParams.author, currentParams.genre, currentParams.ageGroup);
                 closeModal();  // Close the modal after continuing the story
               }}
               className='continue-button'
