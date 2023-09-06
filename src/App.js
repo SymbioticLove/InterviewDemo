@@ -79,7 +79,7 @@ function App() {
     const chosenAuthor = customAuthor || author;
     const chosenGenre = customGenre || genre;
 
-    const messageContent = `Write a ${chosenGenre} story. ${prompt} in the style of ${chosenAuthor} for the age group ${ageGroup}.`;
+    const messageContent = `Write a(n) ${chosenGenre} story. ${prompt} in the style of ${chosenAuthor} for the age group ${ageGroup}.`;
 
     try {
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
@@ -90,10 +90,10 @@ function App() {
                 content: messageContent
             }
         ],
-        max_tokens: 100,
+        max_tokens: 4000,
       }, {
         headers: {
-          'Authorization': `Bearer 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`,
+          'Authorization': `Bearer `,
           'Content-Type': 'application/json'
         }
       });
@@ -143,7 +143,7 @@ const continueStory = async (lastParagraph, author, genre, ageGroup) => {
       max_tokens: 100,
     }, {
       headers: {
-        'Authorization': `Bearer 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`,
+        'Authorization': `Bearer `,
         'Content-Type': 'application/json'
       }
     });
@@ -180,7 +180,7 @@ const continueStory = async (lastParagraph, author, genre, ageGroup) => {
         <form onSubmit={handleSubmit}>
           <h1>What is Your Story About?</h1>
           <select value={genre} onChange={handleGenreChange}>
-            <option value="">Give me a __ story.</option>
+            <option value="">Give me a(n) __ story.</option>
             {genres.map((genre, index) => <option key={index} value={genre}>{genre}</option>)}
           </select>
           <input 
